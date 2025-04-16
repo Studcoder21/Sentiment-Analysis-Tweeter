@@ -414,6 +414,13 @@ def load_model():
     import zipfile
     with zipfile.ZipFile(model_zip, 'r') as zip_ref:
         zip_ref.extractall("final_model")
+
+        # Verificação crítica
+    try:
+        tokenizer = AutoTokenizer.from_pretrained("final_model")
+    except Exception as e:
+        st.error(f"Falha ao carregar tokenizer: {str(e)}")
+        raise e
     
     # Carregamento
     model = AutoModelForSequenceClassification.from_pretrained("final_model")
