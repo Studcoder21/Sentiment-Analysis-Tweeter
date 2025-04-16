@@ -391,7 +391,7 @@ def convert_emojis_to_text(text):
 @st.cache_resource
 def load_model():
     # Baixar modelo do Google Drive
-    model_url = "https://drive.google.com/drive/folders/1BUh-SLS8_8H5V4ID4sm6T0kY4h-KNaH8?usp=sharing"
+    model_url = "https://drive.google.com/uc?id=1BUh-SLS8_8H5V4ID4sm6T0kY4h-KNaH8"
     gdown.download(model_url, model_zip, quiet=False)
     
     
