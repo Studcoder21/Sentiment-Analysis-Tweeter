@@ -388,18 +388,37 @@ def convert_emojis_to_text(text):
 #    model = AutoModelForSequenceClassification.from_pretrained(model_name)
 #    tokenizer = AutoTokenizer.from_pretrained(model_name)
 #    return model, tokenizer###
-@st.cache_resource
-def load_model():
-    # Baixar modelo do Google Drive
-    model_url = "https://drive.google.com/uc?id=1BUh-SLS8_8H5V4ID4sm6T0kY4h-KNaH8"
-    gdown.download(model_url, final_model, quiet=False)
+#@st.cache_resource
+#def load_model():
+#    # Baixar modelo do Google Drive
+#    model_url = "https://drive.google.com/uc?id=1BUh-SLS8_8H5V4ID4sm6T0kY4h-KNaH8"
+#    gdown.download(model_url, final_model, quiet=False)
     
     
     # Carregar modelo
+#    model = AutoModelForSequenceClassification.from_pretrained("final_model")
+#    tokenizer = AutoTokenizer.from_pretrained("final_model")
+#    return model, tokenizer
+#model, tokenizer = load_model()
+
+@st.cache_resource
+def load_model():
+    # URL corrigida (substitua pelo ID real)
+    model_url = "https://drive.google.com/uc?id=1C5CF5XvGG48xrjE-2SehVflVg8us1X8B"
+    model_zip = "model.zip"
+    
+    # Download
+    gdown.download(model_url, model_zip, quiet=False)
+    
+    # Extração
+    import zipfile
+    with zipfile.ZipFile(model_zip, 'r') as zip_ref:
+        zip_ref.extractall("final_model")
+    
+    # Carregamento
     model = AutoModelForSequenceClassification.from_pretrained("final_model")
     tokenizer = AutoTokenizer.from_pretrained("final_model")
     return model, tokenizer
-model, tokenizer = load_model()
 
 def predict_sentiment(text):
     text = clean_tweet(text)
