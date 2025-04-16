@@ -10,5 +10,3 @@ wordcloud
 pillow
 gdown
 openpyxl==3.1.2 
-transformers==4.40.0
-tokenizers==0.15.2
