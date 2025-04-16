@@ -9,3 +9,4 @@ emoji
 wordcloud
 pillow
 gdown
+openpyxl==3.1.2 
