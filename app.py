@@ -426,7 +426,7 @@ def load_model():
     model = AutoModelForSequenceClassification.from_pretrained("final_model")
     tokenizer = AutoTokenizer.from_pretrained("final_model")
     return model, tokenizer
-#model, tokenizer = load_model()    
+model, tokenizer = load_model()    
 
 def predict_sentiment(text):
     text = clean_tweet(text)
